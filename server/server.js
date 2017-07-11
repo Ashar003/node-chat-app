@@ -17,15 +17,16 @@ io.on('connection', (socket) => {
 
 
    
-    socket.emit('newMessage', generateMessage('Admin', 'Welcome to the chat app'));
+    socket.emit('newMessage', generateMessage('Admin', 'Welcome to the chat app')); //Emit to send events
     socket.broadcast.emit('newMessage', generateMessage('Admin', 'New user joined'));
 
  
 
 
-    socket.on('createMessage', (Message) => {
+    socket.on('createMessage', (Message, callback) => { //On to listen for events &&acknowldegment of req
         console.log(Message);
-        io.emit('newMessage', generateMessage(Message.from, Message.text));
+        io.emit('newMessage', generateMessage(Message.from, Message.text)); //Io to send events to everyone
+        callback('This is from the server');
         // socket.broadcast.emit('newMessage', {
         //     from: Message.from,
         //     text: Message.text,
