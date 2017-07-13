@@ -38,9 +38,9 @@ var socket = io();
             var a = jQuery('<a target = "_blank">My Current Location</a>')
 
             li.text(`${message.from}:`)
-            a.attr('href', 'yolo',  message.url)
+            a.attr('href', message.url)
 
-            li.append(a + 'b');
+            li.append(a);
             jQuery('#messages').append(li);
         });
 
